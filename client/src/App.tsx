@@ -4,7 +4,7 @@ function App() {
   return (
     <div>
       <UserSummary>
-      </UserSummary> 
+      </UserSummary>  
     </div> 
   );
 }
