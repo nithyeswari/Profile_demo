@@ -46,10 +46,12 @@ https://github.com/nithyeswari/Profile_demo/blob/master/client/demo.gif
 
 ## Testing
 
-### Unit testing components using Jest
-** Need to add more test cases to test individual components.
+### Unit testing components using Jest 
 
-### e2e testing using Cypress
- ** Need to add  
+### e2e testing using Cypress 
+
+## Further Enchancements
+ -  Add more unit test for validation logic
+ -  Improve the UI of Step2
 
 
