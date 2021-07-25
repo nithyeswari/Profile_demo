@@ -55,10 +55,14 @@ const UserSummary = (props: any) => {
                  newValue = state.form.detail.user;
             }
             console.log(newValue);
-            setUser(newValue || dummy);
-
+            setUser(newValue || dummy); 
         })
-    })
+
+        return () => {
+            unsubscribe();
+        };
+
+    },[])
 
     return (
         <>
