@@ -52,6 +52,6 @@ https://github.com/nithyeswari/Profile_demo/blob/master/client/demo.gif
 
 ## Further Enchancements
  -  Add more unit test for validation logic
- -  Improve the UI of Step2
+ -  Improve the UI of Step2 
 
 

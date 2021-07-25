@@ -18,7 +18,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 import Avatar from '@material-ui/core/Avatar';
 import EmailRounded from '@material-ui/icons/EmailRounded';
-import PhoneAndroidRounded from '@material-ui/icons/PhoneAndroidRounded'; 
+import PhoneAndroidRounded from '@material-ui/icons/PhoneAndroidRounded';
+import { saveState } from "../../app/localStore";
 const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
@@ -38,18 +39,24 @@ const dummy: any = {
     fullname: 'Your full name',
     email: 'Your email address',
     telephone: 'Your phone number',
-    skills:['Angular','jQuery','Polymer','React','Vue.js']
+    skills: ['Angular', 'jQuery', 'Polymer', 'React', 'Vue.js']
 };
 const UserSummary = (props: any) => {
     const classes = useStyles();
     const [user, setUser] = useState(dummy);
-    const [edit, setEdit] = useState(false); 
+    const [edit, setEdit] = useState(false);
 
     useEffect(() => {
         const unsubscribe = store.subscribe(() => {
-            const state = store.getState();
-            const newValue = state.form.detail.values;
+            const state:any = store.getState(); 
+            console.log(state);
+            let newValue = state.form.detail?.values;
+            if( state.form.detail?.user){
+                 newValue = state.form.detail.user;
+            }
+            console.log(newValue);
             setUser(newValue || dummy);
+
         })
     })
 
@@ -78,11 +85,11 @@ const UserSummary = (props: any) => {
                                 </ListItemAvatar>
                                 <ListItemText primary="Phone" secondary={user.telephone} />
                             </ListItem>
-                            
+
                         </List>
                         <Divider />
                         <div className={classes.root}>
-                            {user.skills.map((data:any,index:any) => {
+                            {user.skills.map((data: any, index: any) => {
                                 let icon;
                                 if (data === 'React') {
                                     icon = <TagFacesIcon />;
@@ -114,7 +121,13 @@ const UserSummary = (props: any) => {
             }
 
             {edit &&
-                <UserDetail onSubmit={() => setEdit(false)}></UserDetail>
+                <UserDetail onSubmit={() => {
+                    saveState({
+                        user: store.getState().form.detail.values
+                    });
+                    setEdit(false);
+                }
+                }></UserDetail>
             }
         </>
     )
