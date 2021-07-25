@@ -45,5 +45,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Demo 
 
+https://github.com/nithyeswari/Profile_demo/blob/master/client/demo.gif
+
 
 
